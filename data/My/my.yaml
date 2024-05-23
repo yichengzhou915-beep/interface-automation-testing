@@ -1,0 +1,687 @@
+# 公共参数
+case_common:
+  allureEpic: 接口自动化
+  allureFeature: 我的模块
+  allureStory: 我的菜单下接口
+
+my_01:
+    host: ${{host()}}
+    url: /v2/api/user/app/myPageInfo
+    method: GET
+    detail: 查看我的个人主页
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_02:
+    host: ${{host()}}
+    url: /v1/api/user/app/changeAvatar
+    method: PATCH
+    detail: 修改头像
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      avatarKey: '68e5bcb2-3f66-4ac7-a330-cd3739a9c2da'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_03:
+    host: ${{host()}}
+    url: /v2/api/user/app/profile
+    method: GET
+    detail: 查看我的信息
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      userId: $cache{user_id}
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: login_01
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.id
+            set_cache: user_id
+    assert:
+      status_code: 200
+
+my_04:
+    host: ${{host()}}
+    url: /v1/api/user/app/ChangeNickname
+    method: PATCH
+    detail: 修改昵称
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      nickname: 'Macjohson1'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_05:
+    host: ${{host()}}
+    url: /v1/api/area/app/cityPageable
+    method: GET
+    detail: 查看城市列表
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      filter: '%E6%B7%B1%E5%9C%B3'
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_06:
+    host: ${{host()}}
+    url: /v1/api/area/app/cityByNameLike
+    method: GET
+    detail: 查看定位城市
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      name: '%E6%98%86%E6%98%8E%E5%B8%82'
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_07:
+    host: ${{host()}}
+    url: /v1/api/user/app/ChangeCity
+    method: PATCH
+    detail: 修改城市
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      areaId: '1676842524591108096'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_08:
+    host: ${{host()}}
+    url: /v1/api/user/app/ChangeIntroduction
+    method: PATCH
+    detail: 修改简介
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      introduction: '我很帅'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_09:
+    host: ${{host()}}
+    url: /v1/api/user/app/ChangeAdvantage
+    method: PATCH
+    detail: 修改服务优势
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      advantage: '我很厉害'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_10:
+    host: ${{host()}}
+    url: /v1/api/user/app/ChangeSkill
+    method: PATCH
+    detail: 修改职业经历
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      skill: '做过很多工作'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_11:
+    host: ${{host()}}
+    url: /v1/api/user/app/valid
+    method: GET
+    detail: 查看实名结果
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_12:
+    host: ${{host()}}
+    url: /v2/api/wallet/amount
+    method: GET
+    detail: 查看钱包余额
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_13:
+    host: ${{host()}}
+    url: /v2/api/user/app/check/payPassAndWechatBind
+    method: GET
+    detail: 检查支付信息
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_14:
+    host: ${{host()}}
+    url: /v2/api/user/app/setPayPassword
+    method: POST
+    detail: 设置支付密码
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run: False
+    data:
+      password: '123456'
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_15:
+    host: ${{host()}}
+    url: /v2/api/user/app/cash/config
+    method: GET
+    detail: 检查提现账户配置
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_16:
+    host: ${{host()}}
+    url: /v2/api/user/app/cashAccount
+    method: GET
+    detail: 检查提现账户绑定
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_17:
+    host: ${{host()}}
+    url: /v2/api/user/app/cashAccount/ali
+    method: POST
+    detail: 绑定支付宝账户
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      name: '周逸斌'
+      account: '18174015514'
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_18:
+    host: ${{host()}}
+    url: /v2/api/user/app/cashAccount/bank
+    method: POST
+    detail: 绑定银行卡账户
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      brand: '中国银行'
+      shop: '昆明支行'
+      name: '周逸斌'
+      account: '623358965889789'
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_19:
+    host: ${{host()}}
+    url: /v2/api/wallet/detail/pageable
+    method: GET
+    detail: 查看钱包明细
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_20:
+    host: ${{host()}}
+    url: /v2/api/user/app/changePayPassword
+    method: POST
+    detail: 修改支付密码
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      oldPassword: '123456'
+      newPassword: '123456'
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_21:
+    host: ${{host()}}
+    url: /v2/api/content/app/myHistory
+    method: GET
+    detail: 查看浏览记录
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_22:
+    host: ${{host()}}
+    url: /v2/api/content/app/myPostsV2
+    method: GET
+    detail: 查看我的发布
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      userId: $cache{user_id}
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: login_01
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.id
+            set_cache: user_id
+    assert:
+      status_code: 200
+
+my_23:
+    host: ${{host()}}
+    url: /v1/api/user/app/follow/pageable
+    method: GET
+    detail: 查看我的关注
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      reverse: false
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_24:
+    host: ${{host()}}
+    url: /v1/api/user/app/follow/pageable
+    method: GET
+    detail: 查看我的粉丝
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      reverse: true
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_25:
+    host: ${{host()}}
+    url: /v2/api/content/app/myCollectionV2
+    method: GET
+    detail: 查看我的收藏
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_26:
+    host: ${{host()}}
+    url: /v2/api/content/app/myLikedV2
+    method: GET
+    detail: 查看我的点赞
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_27:
+    host: ${{host()}}
+    url: /v1/api/health/app/block
+    method: POST
+    detail: 将用户加入黑名单
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      targetUserId: '1678645344465072128'
+      actionUserId: $cache{user_id}
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: login_01
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.id
+            set_cache: user_id
+    assert:
+      status_code: 200
+
+my_28:
+    host: ${{host()}}
+    url: /v1/api/health/app/blockList/pageable
+    method: GET
+    detail: 查看我的黑名单列表
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_29:
+    host: ${{host()}}
+    url: /v1/api/health/app/block/$cache{block_id}
+    method: DELETE
+    detail: 将用户移除黑名单
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: None
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: my_28
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.items.[0].id
+            set_cache: block_id
+    assert:
+      status_code: 200
+
+my_30:
+    host: ${{host()}}
+    url: /v2/api/user/app/config
+    method: GET
+    detail: 查看我的设置
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_31:
+    host: ${{host()}}
+    url: /v2/api/config/app/all
+    method: GET
+    detail: 查看app配置
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+my_32:
+    host: ${{host()}}
+    url: /v3/api/findPartner/my
+    method: GET
+    detail: 查看我发布的找搭子
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+    dependence_case:
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+
+

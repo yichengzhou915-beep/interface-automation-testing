@@ -1,0 +1,319 @@
+# 公共参数
+case_common:
+  allureEpic: 接口自动化
+  allureFeature: 造小圈模块
+  allureStory: 造小圈相关接口
+
+circle_01:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/content/square
+    method: POST
+    detail: 未登录查看造小圈推荐帖子
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      clientId: '85830a94-ba0d-5d6b-8a4f-77be09ef223b'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_02:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/hot
+    method: POST
+    detail: 未登录查看造小圈热门圈子
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_03:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/my/contents/pageable
+    method: POST
+    detail: 未登录查看更新的造小圈
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 401
+
+circle_04:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/my/full
+    method: POST
+    detail: 未登录查看我的造小圈
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 401
+
+circle_05:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/my/recommend
+    method: POST
+    detail: 未登录查看感兴趣造小圈
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_06:
+    host: ${{host()}}
+    url: /v2/api/socialCircleCategory/app/pageable
+    method: POST
+    detail: 未登录查看造小圈分类
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_07:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/content/public/createdDESC
+    method: POST
+    detail: 未登录查看积极造友
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_08:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/content/square
+    method: POST
+    detail: 登录查看造小圈推荐帖子
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      clientId: '85830a94-ba0d-5d6b-8a4f-77be09ef223b'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_09:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/hot
+    method: POST
+    detail: 登录查看造小圈热门圈子
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_10:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/my/contents/pageable
+    method: POST
+    detail: 登录查看更新的造小圈
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_11:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/my/full
+    method: POST
+    detail: 登录查看我的造小圈
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_12:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/my/recommend
+    method: POST
+    detail: 登录查看感兴趣造小圈
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_13:
+    host: ${{host()}}
+    url: /v2/api/socialCircleCategory/app/pageable
+    method: POST
+    detail: 登录查看造小圈分类
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+circle_14:
+    host: ${{host()}}
+    url: /v2/api/socialCircle/app/content/public/createdDESC
+    method: POST
+    detail: 登录查看积极造友
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+

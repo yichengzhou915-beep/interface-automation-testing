@@ -1,0 +1,1365 @@
+# 公共参数
+case_common:
+  allureEpic: 接口自动化
+  allureFeature: 首页模块
+  allureStory: 文章相关接口
+
+content_01:
+    host: ${{host()}}
+    url: /v2/api/content/app/homePageableV2
+    method: Get
+    detail: 未登录访问首页热门智能排序
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      type: onlyServe
+      sortType: auto
+      lat: 0.0
+      lng: 0.0
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_02:
+    host: ${{host()}}
+    url: /v2/api/content/app/homePageableV2
+    method: Get
+    detail: 登录后访问首页热门智能排序
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      type: onlyServe
+      sortType: auto
+      lat: 0.0
+      lng: 0.0
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_03:
+    host: ${{host()}}
+    url: /v2/api/content/app/homePageableV2
+    method: Get
+    detail: 登录后访问首页热门最新发布
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      type: onlyServe
+      sortType: createdAt
+      lat: 0.0
+      lng: 0.0
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_04:
+    host: ${{host()}}
+    url: /v2/api/content/app/homePageableV2
+    method: Get
+    detail: 登录后访问首页热门获赞最多
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      type: onlyServe
+      sortType: likeCount
+      lat: 0.0
+      lng: 0.0
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_05:
+    host: ${{host()}}
+    url: /v2/api/content/app/homePageableV2
+    method: Get
+    detail: 登录后访问首页热门收藏最多
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      type: onlyServe
+      sortType: collectCount
+      lat: 0.0
+      lng: 0.0
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_06:
+    host: ${{host()}}
+    url: /v2/api/content/app/homePageableV2
+    method: Get
+    detail: 登录后访问首页热门粉丝最多
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      type: onlyServe
+      sortType: fansCount
+      lat: 0.0
+      lng: 0.0
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_07:
+    host: ${{host()}}
+    url: /v2/api/content/app/homePageableV2
+    method: Get
+    detail: 登录后访问首页热门距离最近
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      type: onlyServe
+      sortType: distance
+      lat: 0.0
+      lng: 0.0
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_08:
+    host: ${{host()}}
+    url: /v2/api/content/app/homePageableV2
+    method: Get
+    detail: 登录后访问首页热门筛选城市昆明
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      type: onlyServe
+      sortType: distance
+      lat: 24.979386
+      lng: 102.764483
+      cityName: '%E6%98%86%E6%98%8E%E5%B8%82'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_09:
+    host: ${{host()}}
+    url: /v2/api/content/app/homePageableV2
+    method: Get
+    detail: 登录后访问首页热门筛选类别学生兼职
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 35
+      type: onlyServe
+      sortType: distance
+      lat: 0.0
+      lng: 0.0
+      categoryId: '1657020150323003392'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_10:
+    host: ${{host()}}
+    url: /v2/api/content/app/likeOrUnset
+    method: POST
+    detail: 登录后点赞
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1701460673146544128'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_11:
+    host: ${{host()}}
+    url: /v2/api/content/app/likeOrUnset
+    method: POST
+    detail: 未登录点赞
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1701460673146544128'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 401
+
+content_12:
+    host: ${{host()}}
+    url: /v2/api/content/app/collectOrUnset
+    method: POST
+    detail: 登录后收藏
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1701460673146544128'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_13:
+    host: ${{host()}}
+    url: /v2/api/content/app/collectOrUnset
+    method: POST
+    detail: 未登录收藏
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1701460673146544128'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 401
+
+content_14:
+    host: ${{host()}}
+    url: /v2/api/user/app/follow
+    method: POST
+    detail: 未登录关注
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      targetUserId: '1680884089557864448'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 401
+
+content_15:
+    host: ${{host()}}
+    url: /v2/api/user/app/follow
+    method: POST
+    detail: 登录后关注
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      targetUserId: '1680884089557864448'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_16:
+    host: ${{host()}}
+    url: /v2/api/comment/firstLevel
+    method: POST
+    detail: 登录后一级评论
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1697172395136946176'
+      contentJson: '{"type":"text","content":"哈哈哈","X-Real-IP":""}'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_17:
+    host: ${{host()}}
+    url: /v2/api/comment/firstLevel
+    method: POST
+    detail: 未登录一级评论
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1697172395136946176'
+      contentJson: '{"type":"text","content":"666","X-Real-IP":""}'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 401
+
+content_18:
+    host: ${{host()}}
+    url: /v2/api/comment/firstLevel
+    method: POST
+    detail: 登录后二级评论
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1697172395136946176'
+      contentJson: '{"type":"text","content":"咋啦","commentId":"1709114832326676480","callbackCommentId":"","X-Real-IP":""}'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_19:
+    host: ${{host()}}
+    url: /v1/api/health/app/report
+    method: POST
+    detail: 举报
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      targetUserId: '1680884089557864448'
+      reportContent: '垃圾广告'
+      serveId: '1697172395136946176'
+      reportUserId: ''
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_20:
+    host: ${{host()}}
+    url: /v2/api/content/app/search
+    method: GET
+    detail: 未登录搜索
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      filter: '%E5%90%83%E9%A5%AD'
+      lat: 0.0
+      lng: 0.0
+      sortType: createdAt
+      serveDemandType: all
+      categoryId: all
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_21:
+    host: ${{host()}}
+    url: /v2/api/content/app/search
+    method: GET
+    detail: 登录后搜索
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      filter: '%E5%90%83%E9%A5%AD'
+      lat: 0.0
+      lng: 0.0
+      sortType: createdAt
+      serveDemandType: all
+      categoryId: all
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_22:
+    host: ${{host()}}
+    url: /v2/api/content/app/search
+    method: GET
+    detail: 登录后搜索浏览最多排序
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      filter: '%E5%90%83%E9%A5%AD'
+      lat: 0.0
+      lng: 0.0
+      sortType: viewCount
+      serveDemandType: all
+      categoryId: all
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_23:
+    host: ${{host()}}
+    url: /v2/api/content/app/showPhone/successPercent
+    method: GET
+    detail: 发布计算显示手机号成功率提升
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_24:
+    host: ${{host()}}
+    url: /v2/api/content/app/search
+    method: GET
+    detail: 登录后搜索获赞最多排序
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      filter: '%E5%90%83%E9%A5%AD'
+      lat: 0.0
+      lng: 0.0
+      sortType: likeCount
+      serveDemandType: all
+      categoryId: all
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_25:
+    host: ${{host()}}
+    url: /v2/api/content/app/search
+    method: GET
+    detail: 登录后搜索收藏最多排序
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      filter: '%E5%90%83%E9%A5%AD'
+      lat: 0.0
+      lng: 0.0
+      sortType: collectCount
+      serveDemandType: all
+      categoryId: all
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_26:
+    host: ${{host()}}
+    url: /v2/api/content/app/search
+    method: GET
+    detail: 登录后搜索粉丝最多排序
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      filter: '%E5%90%83%E9%A5%AD'
+      lat: 0.0
+      lng: 0.0
+      sortType: fansCount
+      serveDemandType: all
+      categoryId: all
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_27:
+    host: ${{host()}}
+    url: /v2/api/content/app/search
+    method: GET
+    detail: 登录后搜索距离最近排序
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      filter: '%E5%90%83%E9%A5%AD'
+      lat: 0.0
+      lng: 0.0
+      sortType: distance
+      serveDemandType: all
+      categoryId: all
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_28:
+    host: ${{host()}}
+    url: /v1/api/category/app/allRoots
+    method: GET
+    detail: 登录后获取所有父级分类
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_29:
+    host: ${{host()}}
+    url: /v1/api/category/app/allRoots
+    method: GET
+    detail: 未登录获取所有父级分类
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_30:
+    host: ${{host()}}
+    url: /v1/api/category/app/getByParentId/$cache{category_id}
+    method: GET
+    detail: 未登录获取父级分类下的子分类
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: None
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: content_29
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.getAllRootCategoryResp.[0].id
+            set_cache: category_id
+    assert:
+      status_code: 200
+
+content_31:
+    host: ${{host()}}
+    url: /v1/api/category/app/search
+    method: GET
+    detail: 搜索类别
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      keyword: '%E6%90%AD%E5%AD%90'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: content_29
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.getAllRootCategoryResp.[0].id
+            set_cache: category_id
+    assert:
+      status_code: 200
+
+content_32:
+    host: ${{host()}}
+    url: /v2/api/topic/app/hot/pageable
+    method: GET
+    detail: 查看热门话题
+    headers:
+      Content-Type: application/json;
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 30
+      filterEmpty: false
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_33:
+    host: ${{host()}}
+    url: /v2/api/map/app/singleKeyword/place/text
+    method: GET
+    detail: 搜索地址
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 20
+      keyword: '%E6%B7%B1%E5%9C%B3'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_34:
+    host: ${{host()}}
+    url: /v1/api/qiniu/app/token
+    method: GET
+    detail: 上传图片获取token
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      bucket: zao-cover
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_35:
+    host: ${{host()}}
+    url: /v2/api/content/app/create
+    method: POST
+    detail: 发布普通内容
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      title: '大家好！！！'
+      content: '大家好，第一次来哈哈'
+      images: '[{"key":"188826b3-1aa7-42f4-8b05-54c0719005d6","width":640,"height":640}]'
+      topics: '[{"id":"1676852675344551936","name":"摄影摄像"}]'
+      lng: 114.116491
+      lat: 22.545469
+      locationSemanticName: '深圳戏院(中海商城店)'
+      servePrice: 0
+      demandPriceMin: 0
+      demandPriceMax: 0
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+    teardown:
+      - case_id: content_36
+        send_request:
+          # 这里我们从响应中获取
+          - dependent_type: response
+            # 通过jsonpath的方式，获取响应的内容
+            jsonpath: $.id
+            # 使用repalce_key进行替换
+            replace_key: $.data.contentId
+
+content_36:
+    host: ${{host()}}
+    url: /v2/api/content/app/haha
+    method: POST
+    detail: 删除普通内容
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: $cache{pt_content_id}
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: content_35
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.id
+            set_cache: pt_content_id
+    assert:
+      status_code: 200
+
+content_37:
+    host: ${{host()}}
+    url: /v2/api/content/app/create
+    method: POST
+    detail: 发布服务
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      title: '照顾小猫咯'
+      content: '照顾小猫'
+      images: '[{"key":"abd00bf0-1c91-444e-9c49-625e8ee7e345","width":1080,"height":1176}]'
+      categoryId: '1657020150323003392'
+      lng: 114.116491
+      lat: 22.545469
+      locationSemanticName: '深圳戏院(中海商城店)'
+      servePrice: 1000
+      demandPriceMin: 0
+      demandPriceMax: 0
+      wechat: 'kidd_zhou'
+      qq: '2316300794'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+    teardown:
+      - case_id: content_39
+        send_request:
+          # 这里我们从响应中获取
+          - dependent_type: response
+            # 通过jsonpath的方式，获取响应的内容
+            jsonpath: $.id
+            # 使用repalce_key进行替换
+            replace_key: $.data.contentId
+
+content_38:
+    host: ${{host()}}
+    url: /v2/api/content/app/updateShowPhone
+    method: POST
+    detail: 发布服务展示手机号
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1697212763102547968'
+      showPhone: true
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case:
+        # 依赖的数据
+    dependence_case_data:
+
+    assert:
+      status_code: 200
+
+
+content_39:
+    host: ${{host()}}
+    url: /v2/api/content/app/haha
+    method: POST
+    detail: 删除服务内容
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: $cache{fw_content_id}
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: content_37
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.id
+            set_cache: fw_content_id
+    assert:
+      status_code: 200
+
+content_40:
+    host: ${{host()}}
+    url: /v2/api/content/app/create
+    method: POST
+    detail: 发布需求
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      title: '找'
+      content: '找'
+      images: '[{"key":"ab4c14f0-5206-4054-8b58-d75191381646","width":640,"height":640}]'
+      categoryId: '1657020150323003392'
+      lng: 114.116491
+      lat: 22.545469
+      locationSemanticName: '深圳戏院(中海商城店)'
+      servePrice: 0
+      demandPriceMin: 0
+      demandPriceMax: 1000
+      wechat: 'kidd_zhou'
+      qq: '2316300794'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+    teardown:
+      - case_id: content_41
+        send_request:
+          # 这里我们从响应中获取
+          - dependent_type: response
+            # 通过jsonpath的方式，获取响应的内容
+            jsonpath: $.id
+            # 使用repalce_key进行替换
+            replace_key: $.data.contentId
+
+content_41:
+    host: ${{host()}}
+    url: /v2/api/content/app/haha
+    method: POST
+    detail: 删除需求内容
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: $cache{xq_content_id}
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: content_37
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.id
+            set_cache: xq_content_id
+    assert:
+      status_code: 200
+
+content_42:
+    host: ${{host()}}
+    url: /v2/api/content/app/create
+    method: POST
+    detail: 发布违规内容
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      title: '约炮'
+      content: '找'
+      images: '[{"key":"ab4c14f0-5206-4054-8b58-d75191381646","width":640,"height":640}]'
+      categoryId: '1657020150323003392'
+      lng: 114.116491
+      lat: 22.545469
+      locationSemanticName: '深圳戏院(中海商城店)'
+      servePrice: 0
+      demandPriceMin: 0
+      demandPriceMax: 1000
+      wechat: 'kidd_zhou'
+      qq: '2316300794'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 400
+
+content_43:
+    host: ${{host()}}
+    url: /v2/api/content/viewRecord
+    method: POST
+    detail: 增加浏览记录
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      userId: $cache{user_id}
+      userIdType: 'user'
+      contentId: '1696136154543067136'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: login_01
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.id
+            set_cache: user_id
+    assert:
+      status_code: 200
+
+content_44:
+    host: ${{host()}}
+    url: /v2/api/content/app/userStatus/1696136154543067136
+    method: GET
+    detail: 查看文章的点赞关注收藏状态
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_45:
+    host: ${{host()}}
+    url: /v2/api/content/app/serveOrDemandDetail/1696136154543067136
+    method: GET
+    detail: 查看文章的价格等信息
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_46:
+    host: ${{host()}}
+    url: /v2/api/content/app/images/1696136154543067136
+    method: GET
+    detail: 查看文章的图片
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_47:
+    host: ${{host()}}
+    url: /v2/api/content/app/contacts/1696136154543067136
+    method: GET
+    detail: 查看文章的联系方式
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+
+content_48:
+    host: ${{host()}}
+    url: /v2/api/comment/firstLevel/pageable/1696136154543067136
+    method: GET
+    detail: 查看文章的一级评论
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: params
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1696136154543067136'
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      status_code: 200
+#
+#content_49:
+#    host: ${{host()}}
+#    url: /v3/api/content/serve
+#    method: POST
+#    detail: 发布搭子服务
+#    headers:
+#      Content-Type: application/json;
+#      authorization: $cache{authorization}
+#    # 请求的数据，是 params 还是 json、或者file、data
+#    requestType: json
+#    # 是否执行，空或者 true 都会执行
+#    is_run:
+#    data:
+#      "loc": {"lat":24.979419,"lng":102.764418,"province":"","city":"昆明市","address":"云南省昆明市官渡区彩云北路辅路k1号靠近家乐福(世纪城店)","locDescription":"家乐福(世纪城店)"},
+#      "amount": (random.randint(1000, 100000)),
+#      "unit": '局',
+#      "content": "自动化发搭子服务" + str(random.randint(10, 1000)),
+#      "images": "[{\"key\":\"1710723148066217984\",\"width\":1080,\"height\":1920}]",
+#      "locDescription": '家乐福(世纪城店)',
+#      "categoryId": '1657020150323003392',
+#      "phone": '18174015514',
+#      "wechat": 'jddnndnx',
+#      "qq": '23163007949',
+#      "mediaType": 'image',
+#      "costOnPlatform": False
+#      # 是否有依赖业务，为空或者false则表示没有
+#    dependence_case: False
+#        # 依赖的数据
+#    dependence_case_data:
+#    assert:
+#      status_code: 200
+#    teardown:
+#      - case_id: my_22
+#        param_prepare:
+#          - dependent_type: self_response
+#            jsonpath: $.items.[0].id
+#            set_cache: first_serve_id
+#      - case_id: content_50
+#        send_request:
+#          - dependent_type: cache
+#            cache_data: first_serve_id
+#            replace_key: $.data.contentId
+#
+#content_50:
+#    host: ${{host()}}
+#    url: /v2/api/content/app/haha
+#    method: POST
+#    detail: 删除搭子服务
+#    headers:
+#      Content-Type: application/json;
+#      authorization: $cache{authorization}
+#    # 请求的数据，是 params 还是 json、或者file、data
+#    requestType: json
+#    # 是否执行，空或者 true 都会执行
+#    is_run: false
+#    data:
+#      contentId: '11111'
+#      # 是否有依赖业务，为空或者false则表示没有
+#    dependence_case: false
+#        # 依赖的数据
+#    dependence_case_data:
+#    assert:
+#      status_code: 200
+#
+#content_51:
+#    host: ${{host()}}
+#    url: /v3/api/qucikFindPartner
+#    method: POST
+#    detail: 发布即刻找搭子
+#    headers:
+#      Content-Type: application/json;
+#      authorization: $cache{authorization}
+#    # 请求的数据，是 params 还是 json、或者file、data
+#    requestType: json
+#    # 是否执行，空或者 true 都会执行
+#    is_run:
+#    data:
+#      "quickFind": True,
+#      "hasCost": True,
+#      "costMethod": 1,
+#      "loc": {"lat":24.979419,"lng":102.764418,"province":"","city":"昆明市","address":"云南省昆明市官渡区彩云北路辅路k1号靠近家乐福(世纪城店)","locDescription":"家乐福(世纪城店)"},
+#      "inValidSeconds": 720,
+#      "amount": (random.randint(1000, 100000)),
+#      "unit": '局',
+#      "content": "自动化发即刻搭" + str(random.randint(10, 1000)),
+#      "images": "[{\"key\":\"1710723148066217984\",\"width\":1080,\"height\":1920}]",
+#      "locDescription": '家乐福(世纪城店)',
+#      "categoryId": '1657020150323003392',
+#      "phone": '18174015514',
+#      "wechat": 'jddnndnx',
+#      "qq": '23163007949',
+#      "mediaType": 'image',
+#      "costOnPlatform": False
+#      # 是否有依赖业务，为空或者false则表示没有
+#    dependence_case: False
+#        # 依赖的数据
+#    dependence_case_data:
+#    assert:
+#      status_code: 200
+#
+#content_52:
+#    host: ${{host()}}
+#    url: /v3/api/category/hot
+#    method: GET
+#    detail: 查看热门分类前20
+#    headers:
+#      Content-Type: application/json;
+#      authorization: $cache{authorization}
+#    # 请求的数据，是 params 还是 json、或者file、data
+#    requestType: params
+#    # 是否执行，空或者 true 都会执行
+#    is_run:
+#    data:
+#      count: 20
+#      # 是否有依赖业务，为空或者false则表示没有
+#    dependence_case: False
+#        # 依赖的数据
+#    dependence_case_data:
+#    assert:
+#      status_code: 200
+#
+#content_53:
+#    host: ${{host()}}
+#    url: /v3/api/findPartner
+#    method: POST
+#    detail: 发布慢慢找搭子
+#    headers:
+#      Content-Type: application/json;
+#      authorization: $cache{authorization}
+#    # 请求的数据，是 params 还是 json、或者file、data
+#    requestType: json
+#    # 是否执行，空或者 true 都会执行
+#    is_run:
+#    data:
+#      quickFind: False,
+#      hasCost: True,
+#      costMethod: 1,
+#      loc: {"lat":24.979419,"lng":102.764418,"province":"","city":"昆明市","address":"云南省昆明市官渡区彩云北路辅路k1号靠近家乐福(世纪城店)","locDescription":"家乐福(世纪城店)"},
+#      inValidSeconds: 720,
+#      amount: (random.randint(1000, 100000)),
+#      unit: '局',
+#      content: "自动化发即刻搭" + str(random.randint(10, 1000)),
+#      images: "[{\"key\":\"1710723148066217984\",\"width\":1080,\"height\":1920}]",
+#      locDescription: '家乐福(世纪城店)',
+#      categoryId: '1657020150323003392',
+#      phone: '18174015514',
+#      wechat: 'jddnndnx',
+#      qq: '23163007949',
+#      mediaType: 'image',
+#      costOnPlatform: False
+#      # 是否有依赖业务，为空或者false则表示没有
+#    dependence_case: False
+#        # 依赖的数据
+#    dependence_case_data:
+#    assert:
+#      status_code: 200
+

@@ -1,0 +1,144 @@
+# 公共参数
+case_common:
+  allureEpic: 接口自动化
+  allureFeature: 订单模块
+  allureStory: 订单相关接口
+
+order_01:
+    host: ${{host()}}
+    url: /v2/api/contentorder/app/pageable?page=1&pageSize=10&filter=&serveOrDemand=serve
+    method: POST
+    detail: 查看我的服务订单
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+order_02:
+    host: ${{host()}}
+    url: /v2/api/contentorder/app/pageable?page=1&pageSize=10&filter=&serveOrDemand=demand
+    method: POST
+    detail: 查看我的需求订单
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+order_03:
+    host: ${{host()}}
+    url: /v2/api/content/app/demand/bidding/manager/list
+    method: POST
+    detail: 查看我的需求竞价
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      page: 1
+      pageSize: 10
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+order_04:
+    host: ${{host()}}
+    url: /v2/api/contentOrder/app/placeOrder
+    method: POST
+    detail: 下单服务
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1696136154543067136'
+      remark: '哈哈'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+order_05:
+    host: ${{host()}}
+    url: /v2/api/contentorder/app/repeatOrderInHour
+    method: POST
+    detail: 查看有没有在一个小时内下单过
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentId: '1696136154543067136'
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+        # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+order_06:
+    host: ${{host()}}
+    url: /v2/api/contentorder/app/close
+    method: POST
+    detail: 关闭待支付订单
+    headers:
+      Content-Type: application/json;
+      authorization: $cache{authorization}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run:
+    data:
+      contentOrderId: $cache{order_id}
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: True
+        # 依赖的数据
+    dependence_case_data:
+      - case_id: order_02
+        dependent_data:
+          - dependent_type: response
+            jsonpath: $.items.[0].id
+            set_cache: order_id
+    assert:
+      # 断言接口状态码
+      status_code: 200
+
+
