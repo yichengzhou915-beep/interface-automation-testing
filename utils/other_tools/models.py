@@ -214,6 +214,11 @@ class Config(BaseModel):
     lark: "Webhook"
     real_time_update_test_cases: bool = False
     host: Text
+    app_id: Text
+    app_secret: Text
+    mobile: Text
+    password: Text
+    appSerial: Text
     app_host: Union[Text, None]
 
 

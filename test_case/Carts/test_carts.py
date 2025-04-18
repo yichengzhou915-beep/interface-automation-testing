@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time   : 2023-10-03 22:34:14
+# @Time   : 2024-08-28 16:37:51
 
 
 import allure
@@ -12,18 +12,18 @@ from utils.read_files_tools.regular_control import regular
 from utils.requests_tool.teardown_control import TearDownHandler
 
 
-case_id = ['circle_01', 'circle_02', 'circle_03', 'circle_04', 'circle_05', 'circle_06', 'circle_07', 'circle_08', 'circle_09', 'circle_10', 'circle_11', 'circle_12', 'circle_13', 'circle_14']
+case_id = ['carts_01', 'carts_02']
 TestData = GetTestCase.case_data(case_id)
 re_data = regular(str(TestData))
 
 
 @allure.epic("接口自动化")
-@allure.feature("造小圈模块")
-class TestCircle:
+@allure.feature("购物车")
+class TestCarts:
 
-    @allure.story("造小圈相关接口")
+    @allure.story("购物车相关接口")
     @pytest.mark.parametrize('in_data', eval(re_data), ids=[i['detail'] for i in TestData])
-    def test_circle(self, in_data, case_skip):
+    def test_carts(self, in_data, case_skip):
         """
         :param :
         :return:
@@ -38,4 +38,4 @@ class TestCircle:
 
 
 if __name__ == '__main__':
-    pytest.main(['test_test_circle.py', '-s', '-W', 'ignore:Module already imported:pytest.PytestWarning'])
+    pytest.main(['test_test_carts.py', '-s', '-W', 'ignore:Module already imported:pytest.PytestWarning'])

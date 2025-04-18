@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import base64
 import json
-
+import hashlib
+import random
+import uuid
+from urllib.parse import urlencode
 import pytest
 import time
 import allure
@@ -23,38 +27,85 @@ def clear_report():
     del_file(ensure_path_sep("\\report"))
 
 
-@pytest.fixture(scope="session", autouse=True)
-def work_login_init():
-    """
-    获取登录的cookie
-    :return:
-    """
-    url = config.host + '/v1/api/user/app/auth'
-    data = {
-        "phone": "18988494026",
-        "smsCode": "1812"
+@pytest.fixture(scope="function", autouse=True)
+def authorization(time_difference=0):
+    params = {
+        "appid": config.app_id,
+        "timestamp": int(time.time()),
+        "rand": random.randint(100000, 999999)
     }
-    headers = {'Content-Type': 'application/json'}
-    try:
-        # 请求登录接口
-        res = requests.post(url=url, json=data, headers=headers)
-        res.raise_for_status()  # 检查响应是否成功
-        res = res.text
-        authorization = json.loads(res)['accessToken']
-        print(authorization)
-        if authorization:
-            CacheHandler.update_cache(cache_name='authorization', value=authorization)
-    except Exception as e:
-        pytest.fail(f"登录失败：{str(e)}")
-    # response_cookie = res.cookies
-    #
-    # cookies = ''
-    # for k, v in response_cookie.items():
-    #     _cookie = k + "=" + v + ";"
-    #     # 拿到登录的cookie内容，cookie拿到的是字典类型，转换成对应的格式
-    #     cookies += _cookie
-    #     # 将登录接口中的cookie写入缓存中，其中login_cookie是缓存名称
-    # CacheHandler.update_cache(cache_name='login_cookie', value=cookies)
+    sorted_params = dict(sorted(params.items()))
+    sorted_params['key'] = config.app_secret
+    # 将参数字典转换为 URL 编码的查询字符串，并生成 MD5 哈希值
+    query_string = urlencode(sorted_params)
+    signature = hashlib.md5(query_string.encode('utf-8')).hexdigest()
+    signature= signature.lower()
+    rand = params['rand']
+    timestamp = params['timestamp']
+    url = config.host + '/v1/session/password'
+    data = {"mobile": config.mobile,
+            "password": config.password,
+            "appid": config.app_id,
+            "cid": "E08A92DB-E16B-0B6A-FC18-70BE4FE3F8B5",
+            "sign": signature,
+            "rand": rand,
+            "timestamp": timestamp
+            }
+    res = requests.post(url, data)
+    res = json.loads(res.text)
+    access_token = res['data']['access_token']
+    uid = res['data']['client']['uid']
+    gear_id = res['data']['client']['gear_id']
+    auth_string = f'{config.app_id}:{access_token}:{uid}:{gear_id}'
+    authentication = 'USERID ' + base64.b64encode(auth_string.encode()).decode()
+    split_token = authentication.split("USERID ")[1]
+    uid = base64.b64decode(split_token).decode().split(":")[2]
+    timestamp = int(time.time() * 1000) + time_difference
+    nonce = str(uuid.uuid4()).replace('-', '')[:32]
+    sign = hashlib.md5((config.app_id + str(timestamp) + nonce + uid + config.app_secret).encode('utf-8')).hexdigest()
+    auth_string = f"{config.app_id}:{timestamp}:{nonce}:{uid}:{sign}"
+    hua5_auth = base64.b64encode(auth_string.encode('utf-8')).decode('utf-8')
+    headers = {"authentication": authentication,
+               "appSerial": config.appSerial,
+               "hua5-auth": hua5_auth,
+               "content-type": 'application/json;charset=UTF-8',
+               "User-Agent": 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1 wechatdevtools/1.06.2407110 MicroMessenger/8.0.5 webview/'
+              }
+    CacheHandler.update_cache(cache_name='headers', value=headers)
+    print(headers)
+
+
+# def work_login_init():
+#     """
+#     获取登录的cookie
+#     :return:
+#     """
+#     url = config.host + '/v1/api/user/app/auth'
+#     data = {
+#         "phone": "18988494026",
+#         "smsCode": "1812"
+#     }
+#     headers = {'Content-Type': 'application/json'}
+#     try:
+#         # 请求登录接口
+#         res = requests.post(url=url, json=data, headers=headers)
+#         res.raise_for_status()  # 检查响应是否成功
+#         res = res.text
+#         authorization = json.loads(res)['accessToken']
+#         print(authorization)
+#         if authorization:
+#             CacheHandler.update_cache(cache_name='authorization', value=authorization)
+#     except Exception as e:
+#         pytest.fail(f"登录失败：{str(e)}")
+#     # response_cookie = res.cookies
+#     #
+#     # cookies = ''
+#     # for k, v in response_cookie.items():
+#     #     _cookie = k + "=" + v + ";"
+#     #     # 拿到登录的cookie内容，cookie拿到的是字典类型，转换成对应的格式
+#     #     cookies += _cookie
+#     #     # 将登录接口中的cookie写入缓存中，其中login_cookie是缓存名称
+#     # CacheHandler.update_cache(cache_name='login_cookie', value=cookies)
 
 
 def pytest_collection_modifyitems(items):
@@ -130,4 +181,3 @@ def pytest_terminal_summary(terminalreporter):
         INFO.logger.info("用例成功率: %.2f" % _RATE + " %")
     except ZeroDivisionError:
         INFO.logger.info("用例成功率: 0.00 %")
-
