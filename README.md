@@ -883,6 +883,3 @@ get请求我们 requestType 写的是 params ，这样发送请求时，我们�
 ![img.png](Files/image/allure.png)
 
 ![img.png](Files/image/allure2.png)
-
-
-
