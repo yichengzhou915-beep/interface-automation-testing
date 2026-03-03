@@ -61,7 +61,13 @@ def run():
         if config.notification_type != NotificationType.DEFAULT.value:
             notify_type = config.notification_type.split(",")
             for i in notify_type:
-                notification_mapping.get(i.lstrip(""))()
+                # 尝试执行通知，但如果配置里有 email，可能还会在这里报错
+                if i.lstrip("") == NotificationType.EMAIL.value:
+                    INFO.logger.warning("已跳过邮件发送步骤，请检查邮箱配置。")
+                    continue
+                func = notification_mapping.get(i.lstrip(""))
+                if func:
+                    func()
 
         if config.excel_report:
             ErrorCaseExcel().write_case()
@@ -69,14 +75,12 @@ def run():
         # 程序运行之后，自动启动报告，如果不想启动报告，可注释这段代码
         os.system(f"allure serve ./report/tmp -h 127.0.0.1 -p 9999")
 
-    except Exception:
-        # 如有异常，相关异常发送邮件
-        e = traceback.format_exc()
-        send_email = SendEmail(AllureFileClean.get_case_count())
-        send_email.error_mail(e)
+    except Exception as e:
+        # 恢复 except 块，但不去调用 send_email，而是把错误打印出来
+        e_msg = traceback.format_exc()
+        INFO.logger.error(f"程序运行发生异常，跳过邮件发送，错误详情:\n{e_msg}")
         raise
 
 
 if __name__ == '__main__':
     run()
-

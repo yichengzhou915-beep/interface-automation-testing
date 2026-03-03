@@ -1,18 +1,18 @@
-project_name: 造好玩
+project_name: 乐芒换电
 
 #env: 测试环境
 env: 线上环境
 # 测试人员名称，作用于自动生成代码的作者，以及发送企业微信、钉钉通知的测试负责人
-tester_name: kidd
-app_id: hua5_text
-app_secret: hua5_123456
-mobile: 18669010827
-password: 123456
-appSerial: 2408001
+tester_name: zyc
+app_id: lemang
+app_secret: lemang_123456
+mobile: "18307940779"
+password: "123456"
+appSerial: "514077"
 # 域名1
-host: https://api-test.hua5.com
+host: https://j2bkkm.dev.hcpower.net:17801
 # 域名2，支持多个域名配置
-app_host:
+#app_host:appSerial
 
 # 实时更新用例内容，False时，已生成的代码不会在做变更
 # 设置为True的时候，修改yaml文件的用例，代码中的内容会实时更新
@@ -53,7 +53,7 @@ wechat:
 
 ### 邮箱必填，需要全部都配置好，程序运行失败时，会发送邮件通知!!!!
 email:
-  send_user: '2316300794@qq.com'
+  send_user: '2951575337@qq.com'
   email_host: smtp.qq.com
   # 自己到QQ邮箱中配置stamp_key
   stamp_key: 'xalhfvcccwcidiji'
