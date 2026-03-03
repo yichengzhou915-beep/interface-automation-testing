@@ -1,0 +1,34 @@
+# 公共参数
+case_common:
+  allureEpic: 接口自动化
+  allureFeature: 登录
+  allureStory: 登录相关接口
+
+  login_01:
+    host: ${{host()}}
+    url: /hdg/qg/user/codeLogin
+    method: POST
+    detail: 登录小程序
+    headers: $cache{headers}
+    # Content-Type：multipart/form-data
+    # 这里cookie的值，写的是存入缓存的名称
+     #cookie：$cache{login_cookie}
+    # 请求的数据，是 params 还是 json、或者file、data
+    requestType: json
+    # 是否执行，空或者 true 都会执行
+    is_run: true
+    data:
+      phoneNumber: "18307940779"
+      code: "514077"
+      # 是否有依赖业务，为空或者false则表示没有
+    dependence_case: False
+    # 依赖的数据
+    dependence_case_data:
+    assert:
+      # 断言接口状态码
+      status_code: 200
+      msgCode:
+        jsonpath: $.message
+        type: ==
+        value: "登录成功"
+        AssertType:
